@@ -153,7 +153,7 @@ class MultiheadAttention(nn.Module):
             q = self.in_proj_q(query)
             k = self.in_proj_k(key)
             v = self.in_proj_v(value)
-        q *= self.scaling
+        q = q * self.scaling
 
         if self.bias_k is not None:
             assert self.bias_v is not None
@@ -227,7 +227,7 @@ class MultiheadAttention(nn.Module):
             attn_mask = attn_mask.unsqueeze(0)
             if self.onnx_trace:
                 attn_mask = attn_mask.repeat(attn_weights.size(0), 1, 1)
-            attn_weights += attn_mask
+            attn_weights = attn_weights + attn_mask
 
         if key_padding_mask is not None:
             # don't attend to padding symbols
@@ -266,7 +266,9 @@ class MultiheadAttention(nn.Module):
         return attn, attn_weights
 
     def in_proj_qkv(self, query):
-        return self._in_proj(query).chunk(3, dim=-1)
+        tmp = self._in_proj(query)
+        tmp = tmp.chunk(3, dim=-1)
+        return tmp
 
     def in_proj_q(self, query):
         if self.qkv_same_dim:

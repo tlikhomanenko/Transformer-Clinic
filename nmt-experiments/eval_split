@@ -1,0 +1,24 @@
+CUDA_VISIBLE_DEVICES=0 fairseq-generate ../data-bin/wmt14_en_de_joined_dict_split_de \
+                    --path $1/checkpoint$2.pt \
+                    --batch-size 128 --beam 4 --lenpen 0.6 --remove-bpe \
+                    --user-dir ../radam_fairseq --quiet --gen-subset valid
+CUDA_VISIBLE_DEVICES=0 fairseq-generate ../data-bin/wmt14_en_de_joined_dict_split_de \
+                    --path $1/checkpoint$2.pt \
+                    --batch-size 128 --beam 4 --lenpen 0.6 --remove-bpe \
+                    --user-dir ../radam_fairseq --quiet --gen-subset test
+CUDA_VISIBLE_DEVICES=0 fairseq-generate ../data-bin/wmt14_en_de_joined_dict_split_de-2 \
+                    --path $1/checkpoint$2.pt \
+                    --batch-size 128 --beam 4 --lenpen 0.6 --remove-bpe \
+                    --user-dir ../radam_fairseq --quiet --gen-subset valid
+CUDA_VISIBLE_DEVICES=0 fairseq-generate ../data-bin/wmt14_en_de_joined_dict_split_de-2 \
+                    --path $1/checkpoint$2.pt \
+                    --batch-size 128 --beam 4 --lenpen 0.6 --remove-bpe \
+                    --user-dir ../radam_fairseq --quiet --gen-subset test
+CUDA_VISIBLE_DEVICES=0 fairseq-generate ../data-bin/wmt14_en_de_joined_dict_split_de-3 \
+                    --path $1/checkpoint$2.pt \
+                    --batch-size 128 --beam 4 --lenpen 0.6 --remove-bpe \
+                    --user-dir ../radam_fairseq --quiet --gen-subset valid
+CUDA_VISIBLE_DEVICES=0 fairseq-generate ../data-bin/wmt14_en_de_joined_dict_split_de-3 \
+                    --path $1/checkpoint$2.pt \
+                    --batch-size 128 --beam 4 --lenpen 0.6 --remove-bpe \
+                    --user-dir ../radam_fairseq --quiet --gen-subset test

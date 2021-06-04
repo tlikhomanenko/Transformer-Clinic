@@ -55,13 +55,13 @@ class TransformerEncoderLayer(nn.Module):
             self.fc2 = Linear(args.encoder_ffn_embed_dim, self.embed_dim)
 
             if 'adaptive-profiling' == args.init_type:
-                if not tmp_file:
-                    tmp_file = open('profile.ratio.init', 'w')
+                # if not tmp_file:
+                tmp_file = open(args.profiling_path, 'w')
                 self.attention_ratio_change = nn.Parameter(torch.ones(self.embed_dim))
                 self.fc_ratio_change = nn.Parameter(torch.ones(self.embed_dim))
             else:
                 if not tmp_file:
-                    tmp_file = open('profile.ratio.init', 'r')
+                    tmp_file = open(args.profiling_path, 'r')
 
                 layer_iter, next_value = [float(tup) for tup in tmp_file.readline().split()]
                 print('layer_num: {}, layer_iter: {}'.format(self.layer_num, layer_iter))
@@ -140,7 +140,6 @@ class TransformerEncoderLayer(nn.Module):
                     del state_dict[k]
 
     def forward(self, x, encoder_padding_mask, attn_mask=None):
-
         not_initialized = ('adaptive-profiling' == self.args.init_type) and (1.0 == self.attention_ratio_change.min()) and self.training
 
         residual = x

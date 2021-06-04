@@ -142,3 +142,8 @@ python preprocess.py --source-lang en --target-lang de \
   --trainpref $prep/train --validpref $prep/valid --testpref $prep/test \
   --destdir ../data-bin/wmt14_en_de_joined_dict \
   --joined-dictionary
+
+
+python ../fairseq/preprocess.py --source-lang en --target-lang de  --validpref wmt14_en_de/tmp/bpe-1.valid  --testpref wmt14_en_de/tmp/bpe-1.test   --destdir ../data-bin/wmt14_en_de_joined_dict_split --joined-dictionary --srcdict=../data-bin/wmt14_en_de_joined_dict/dict.en.txt
+
+python ../fairseq/preprocess.py --source-lang en --target-lang de  --validpref wmt14_en_de/tmp/bpe-1.valid  --testpref wmt14_en_de/tmp/bpe-1.test   --destdir ../data-bin/wmt14_en_de_joined_dict_split_de --joined-dictionary --srcdict=../data-bin/wmt14_en_de_joined_dict/dict.en.txt

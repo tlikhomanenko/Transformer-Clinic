@@ -99,6 +99,14 @@ class TransformerModel(FairseqEncoderDecoderModel):
                             help='apply layernorm before each encoder block')
         parser.add_argument('--encoder-learned-pos', action='store_true',
                             help='use learned positional embeddings in the encoder')
+        parser.add_argument('--augmented-embedding', action='store_true',
+                            help='use cape')
+        parser.add_argument('--global-shift', type=float, metavar='D',
+                            help='gloabl shift in cape [-g, g]', default=5.0)
+        parser.add_argument('--global-shift-int', action='store_true',
+                            help='use int global shift')
+        parser.add_argument('--french', action='store_true',
+                            help='dst language is french')
         parser.add_argument('--decoder-embed-path', type=str, metavar='STR',
                             help='path to pre-trained decoder embedding')
         parser.add_argument('--decoder-embed-dim', type=int, metavar='N',
@@ -318,18 +326,35 @@ class TransformerEncoder(FairseqEncoder):
             self.out_type = torch.half
         else:
             self.out_type = torch.float
+        if getattr(args, 'augmented_embedding', False):
+            self.aug = args.augmented_embedding
+            print("Use augmentation ", self.aug)
+            self.global_shift = args.global_shift
+            if getattr(args, 'global_shift_int', False):
+                self.global_shift_int = args.global_shift_int
+            if getattr(args, 'french', False):
+                self.french = args.french
 
-    def forward_embedding(self, src_tokens):
+    def forward_embedding(self, src_tokens, global_shift, global_shift_int):
         # embed tokens and positions
         embed = self.embed_scale * self.embed_tokens(src_tokens)
         if self.embed_positions is not None:
-            x = embed + self.embed_positions(src_tokens)
+            if hasattr(self, "aug") and self.aug:
+                lang_scale = 1.0337192513944202
+                if hasattr(self, "french"):
+                    lang_scale = 1.163200499701331
+                pos = self.embed_positions(src_tokens, aug=True, 
+                global_shift=global_shift, lang_scale=lang_scale, global_shift_int=global_shift_int)
+            else:
+                pos = self.embed_positions(src_tokens)
+            x = embed + pos
         # if self.args.fp16:
         #     x = x.half()
         x = F.dropout(x, p=self.dropout, training=self.training)
         return x, embed
 
-    def forward(self, src_tokens, src_lengths, cls_input=None, return_all_hiddens=False):
+    def forward(self, src_tokens, src_lengths, cls_input=None, return_all_hiddens=False, 
+    global_shift=None, global_shift_int=False):
         """
         Args:
             src_tokens (LongTensor): tokens in the source language of shape
@@ -352,7 +377,7 @@ class TransformerEncoder(FairseqEncoder):
         if self.layer_wise_attention:
             return_all_hiddens = True
 
-        x, encoder_embedding = self.forward_embedding(src_tokens)
+        x, encoder_embedding = self.forward_embedding(src_tokens, global_shift, global_shift_int)
 
         # B x T x C -> T x B x C
         x = x.transpose(0, 1)
@@ -523,12 +548,18 @@ class TransformerDecoder(FairseqIncrementalDecoder):
         else:
             self.layer_norm = None
 
+        if getattr(args, 'augmented_embedding', False):
+            self.aug = args.augmented_embedding
+            print("Use augmentation ", self.aug)
+
     def forward(
         self,
         prev_output_tokens,
         encoder_out=None,
         incremental_state=None,
         features_only=False,
+        global_shift=None,
+        global_shift_int=False,
         **extra_args,
     ):
         """
@@ -548,7 +579,8 @@ class TransformerDecoder(FairseqIncrementalDecoder):
                 - a dictionary with any model-specific outputs
         """
         x, extra = self.extract_features(
-            prev_output_tokens, encoder_out, incremental_state, **extra_args,
+            prev_output_tokens, encoder_out, incremental_state, global_shift=global_shift,
+            global_shift_int=global_shift_int, **extra_args,
         )
         if not features_only:
             x = self.output_layer(x)
@@ -562,6 +594,8 @@ class TransformerDecoder(FairseqIncrementalDecoder):
         full_context_alignment=False,
         alignment_layer=None,
         alignment_heads=None,
+        global_shift=None,
+        global_shift_int=False,
         **unused,
     ):
         """
@@ -587,10 +621,16 @@ class TransformerDecoder(FairseqIncrementalDecoder):
             alignment_layer = len(self.layers) - 1
 
         # embed positions
-        positions = self.embed_positions(
-            prev_output_tokens,
-            incremental_state=incremental_state,
-        ) if self.embed_positions is not None else None
+        positions = None
+        if self.embed_positions is not None:
+            if hasattr(self, "aug") and self.aug:
+                positions = self.embed_positions(
+                    prev_output_tokens, incremental_state=incremental_state, aug=True, 
+                    global_shift=global_shift, lang_scale=1.,
+                    global_shift_int=global_shift_int)
+            else:
+                positions = self.embed_positions(
+                    prev_output_tokens, incremental_state=incremental_state)
 
         if incremental_state is not None:
             prev_output_tokens = prev_output_tokens[:, -1:]
@@ -604,7 +644,7 @@ class TransformerDecoder(FairseqIncrementalDecoder):
             x = self.project_in_dim(x)
 
         if positions is not None:
-            x += positions
+            x = x + positions
 
         # if self.args.fp16:
         #     x = x.half()

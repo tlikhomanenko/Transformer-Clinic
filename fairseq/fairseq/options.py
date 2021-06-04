@@ -545,6 +545,7 @@ def add_model_args(parser):
     group.add_argument('--init-type', default='default', type=str, choices=['adaptive', 'adaptive-profiling', \
         'default', 'looklinear', 'rezero', 'rezero_postln']) 
 
+    group.add_argument('--profiling_path', type=str, default='profile.ratio.init')
     group.add_argument('--plot_variance', action='store_true')
     group.add_argument('--plot_gradient', action='store_true')
     group.add_argument('--plot_stability', action='store_true')

@@ -1,0 +1,432 @@
+Namespace(beam=5, bpe=None, cpu=False, criterion='cross_entropy', data='../data-bin/wmt14_en_fr_joined_dict_split_fr', dataset_impl=None, decoding_format=None, diverse_beam_groups=-1, diverse_beam_strength=0.5, empty_cache_freq=0, force_anneal=None, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='valid', iter_decode_eos_penalty=0.0, iter_decode_force_max_iter=False, iter_decode_max_iter=10, lazy_load=False, left_pad_source='True', left_pad_target='False', lenpen=0.8, load_alignments=False, log_format=None, log_interval=1000, lr_scheduler='fixed', lr_shrink=0.1, match_source_len=False, max_len_a=0, max_len_b=200, max_sentences=128, max_source_positions=1024, max_target_positions=1024, max_tokens=None, memory_efficient_fp16=False, min_len=1, min_loss_scale=0.0001, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_progress_bar=False, no_repeat_ngram_size=0, num_shards=1, num_workers=1, optimizer='nag', path='wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt', prefix_size=0, print_alignment=False, print_step=False, quiet=True, raw_text=False, remove_bpe='@@ ', replace_unk=None, required_batch_size_multiple=8, results_path=None, sacrebleu=False, sampling=False, sampling_topk=-1, sampling_topp=-1.0, score_reference=False, seed=1, shard_id=0, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', tbmf_wrapper=False, temperature=1.0, tensorboard_logdir='', threshold_loss_scale=None, tokenizer=None, unkpen=0, unnormalized=False, upsample_primary=1, user_dir='../radam_fairseq', warmup_updates=0, weight_decay=0.0)
+| [en] dictionary: 44512 types
+| [fr] dictionary: 44512 types
+| loaded 9394 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr/valid.en-fr.en
+| loaded 9394 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr/valid.en-fr.fr
+| ../data-bin/wmt14_en_fr_joined_dict_split_fr valid en-fr 9394 examples
+| loading model(s) from wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt
+source len: 1024
+target len: 1024
+1
+layer_num: 0, layer_iter: 1.0
+encoder attn ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+encoder ffn ratio: 1.0684021711349487
+layer_num: 1, layer_iter: 3.0
+encoder attn ratio: 1.2406854629516602
+layer_num: 1, layer_iter: 4.0
+encoder ffn ratio: 1.26668119430542
+layer_num: 2, layer_iter: 5.0
+encoder attn ratio: 1.4179164171218872
+layer_num: 2, layer_iter: 6.0
+encoder ffn ratio: 1.4515354633331299
+layer_num: 3, layer_iter: 7.0
+encoder attn ratio: 1.5819801092147827
+layer_num: 3, layer_iter: 8.0
+encoder ffn ratio: 1.6215579509735107
+layer_num: 4, layer_iter: 9.0
+encoder attn ratio: 1.7410005331039429
+layer_num: 4, layer_iter: 10.0
+encoder ffn ratio: 1.784171462059021
+layer_num: 5, layer_iter: 11.0
+encoder attn ratio: 1.890649437904358
+layer_num: 5, layer_iter: 12.0
+encoder ffn ratio: 1.9380868673324585
+layer_num: 0, layer_iter: 1.0
+decoder self ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+decoder en ratio: 1.087343692779541
+layer_num: 0, layer_iter: 3.0
+decoder ffn ratio: 1.1801178455352783
+layer_num: 1, layer_iter: 4.0
+decoder self ratio: 1.3276029825210571
+layer_num: 1, layer_iter: 5.0
+decoder en ratio: 1.380298137664795
+layer_num: 1, layer_iter: 6.0
+decoder ffn ratio: 1.4478627443313599
+layer_num: 2, layer_iter: 7.0
+decoder self ratio: 1.5848424434661865
+layer_num: 2, layer_iter: 8.0
+decoder en ratio: 1.6508562564849854
+layer_num: 2, layer_iter: 9.0
+decoder ffn ratio: 1.7075132131576538
+layer_num: 3, layer_iter: 10.0
+decoder self ratio: 1.8137255907058716
+layer_num: 3, layer_iter: 11.0
+decoder en ratio: 1.883510947227478
+layer_num: 3, layer_iter: 12.0
+decoder ffn ratio: 1.9319835901260376
+layer_num: 4, layer_iter: 13.0
+decoder self ratio: 2.033181667327881
+layer_num: 4, layer_iter: 14.0
+decoder en ratio: 2.1108345985412598
+layer_num: 4, layer_iter: 15.0
+decoder ffn ratio: 2.1586103439331055
+layer_num: 5, layer_iter: 16.0
+decoder self ratio: 2.2497386932373047
+layer_num: 5, layer_iter: 17.0
+decoder en ratio: 2.3182051181793213
+layer_num: 5, layer_iter: 18.0
+decoder ffn ratio: 2.3620712757110596
+| Translated 9394 sentences (158729 tokens) in 40.3s (233.39 sentences/s, 3943.56 tokens/s)
+| Generate valid with beam=5: BLEU4 = 45.38, 65.8/49.4/39.8/32.7 (BP=1.000, ratio=1.034, syslen=139491, reflen=134950)
+Namespace(beam=5, bpe=None, cpu=False, criterion='cross_entropy', data='../data-bin/wmt14_en_fr_joined_dict_split_fr', dataset_impl=None, decoding_format=None, diverse_beam_groups=-1, diverse_beam_strength=0.5, empty_cache_freq=0, force_anneal=None, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', iter_decode_eos_penalty=0.0, iter_decode_force_max_iter=False, iter_decode_max_iter=10, lazy_load=False, left_pad_source='True', left_pad_target='False', lenpen=0.8, load_alignments=False, log_format=None, log_interval=1000, lr_scheduler='fixed', lr_shrink=0.1, match_source_len=False, max_len_a=0, max_len_b=200, max_sentences=128, max_source_positions=1024, max_target_positions=1024, max_tokens=None, memory_efficient_fp16=False, min_len=1, min_loss_scale=0.0001, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_progress_bar=False, no_repeat_ngram_size=0, num_shards=1, num_workers=1, optimizer='nag', path='wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt', prefix_size=0, print_alignment=False, print_step=False, quiet=True, raw_text=False, remove_bpe='@@ ', replace_unk=None, required_batch_size_multiple=8, results_path=None, sacrebleu=False, sampling=False, sampling_topk=-1, sampling_topp=-1.0, score_reference=False, seed=1, shard_id=0, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', tbmf_wrapper=False, temperature=1.0, tensorboard_logdir='', threshold_loss_scale=None, tokenizer=None, unkpen=0, unnormalized=False, upsample_primary=1, user_dir='../radam_fairseq', warmup_updates=0, weight_decay=0.0)
+| [en] dictionary: 44512 types
+| [fr] dictionary: 44512 types
+| loaded 1047 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr/test.en-fr.en
+| loaded 1047 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr/test.en-fr.fr
+| ../data-bin/wmt14_en_fr_joined_dict_split_fr test en-fr 1047 examples
+| loading model(s) from wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt
+source len: 1024
+target len: 1024
+1
+layer_num: 0, layer_iter: 1.0
+encoder attn ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+encoder ffn ratio: 1.0684021711349487
+layer_num: 1, layer_iter: 3.0
+encoder attn ratio: 1.2406854629516602
+layer_num: 1, layer_iter: 4.0
+encoder ffn ratio: 1.26668119430542
+layer_num: 2, layer_iter: 5.0
+encoder attn ratio: 1.4179164171218872
+layer_num: 2, layer_iter: 6.0
+encoder ffn ratio: 1.4515354633331299
+layer_num: 3, layer_iter: 7.0
+encoder attn ratio: 1.5819801092147827
+layer_num: 3, layer_iter: 8.0
+encoder ffn ratio: 1.6215579509735107
+layer_num: 4, layer_iter: 9.0
+encoder attn ratio: 1.7410005331039429
+layer_num: 4, layer_iter: 10.0
+encoder ffn ratio: 1.784171462059021
+layer_num: 5, layer_iter: 11.0
+encoder attn ratio: 1.890649437904358
+layer_num: 5, layer_iter: 12.0
+encoder ffn ratio: 1.9380868673324585
+layer_num: 0, layer_iter: 1.0
+decoder self ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+decoder en ratio: 1.087343692779541
+layer_num: 0, layer_iter: 3.0
+decoder ffn ratio: 1.1801178455352783
+layer_num: 1, layer_iter: 4.0
+decoder self ratio: 1.3276029825210571
+layer_num: 1, layer_iter: 5.0
+decoder en ratio: 1.380298137664795
+layer_num: 1, layer_iter: 6.0
+decoder ffn ratio: 1.4478627443313599
+layer_num: 2, layer_iter: 7.0
+decoder self ratio: 1.5848424434661865
+layer_num: 2, layer_iter: 8.0
+decoder en ratio: 1.6508562564849854
+layer_num: 2, layer_iter: 9.0
+decoder ffn ratio: 1.7075132131576538
+layer_num: 3, layer_iter: 10.0
+decoder self ratio: 1.8137255907058716
+layer_num: 3, layer_iter: 11.0
+decoder en ratio: 1.883510947227478
+layer_num: 3, layer_iter: 12.0
+decoder ffn ratio: 1.9319835901260376
+layer_num: 4, layer_iter: 13.0
+decoder self ratio: 2.033181667327881
+layer_num: 4, layer_iter: 14.0
+decoder en ratio: 2.1108345985412598
+layer_num: 4, layer_iter: 15.0
+decoder ffn ratio: 2.1586103439331055
+layer_num: 5, layer_iter: 16.0
+decoder self ratio: 2.2497386932373047
+layer_num: 5, layer_iter: 17.0
+decoder en ratio: 2.3182051181793213
+layer_num: 5, layer_iter: 18.0
+decoder ffn ratio: 2.3620712757110596
+| Translated 1047 sentences (17177 tokens) in 4.3s (243.75 sentences/s, 3998.98 tokens/s)
+| Generate test with beam=5: BLEU4 = 38.40, 64.8/44.2/32.1/23.7 (BP=1.000, ratio=1.006, syslen=14480, reflen=14393)
+Namespace(beam=5, bpe=None, cpu=False, criterion='cross_entropy', data='../data-bin/wmt14_en_fr_joined_dict_split_fr-2', dataset_impl=None, decoding_format=None, diverse_beam_groups=-1, diverse_beam_strength=0.5, empty_cache_freq=0, force_anneal=None, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='valid', iter_decode_eos_penalty=0.0, iter_decode_force_max_iter=False, iter_decode_max_iter=10, lazy_load=False, left_pad_source='True', left_pad_target='False', lenpen=0.8, load_alignments=False, log_format=None, log_interval=1000, lr_scheduler='fixed', lr_shrink=0.1, match_source_len=False, max_len_a=0, max_len_b=200, max_sentences=128, max_source_positions=1024, max_target_positions=1024, max_tokens=None, memory_efficient_fp16=False, min_len=1, min_loss_scale=0.0001, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_progress_bar=False, no_repeat_ngram_size=0, num_shards=1, num_workers=1, optimizer='nag', path='wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt', prefix_size=0, print_alignment=False, print_step=False, quiet=True, raw_text=False, remove_bpe='@@ ', replace_unk=None, required_batch_size_multiple=8, results_path=None, sacrebleu=False, sampling=False, sampling_topk=-1, sampling_topp=-1.0, score_reference=False, seed=1, shard_id=0, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', tbmf_wrapper=False, temperature=1.0, tensorboard_logdir='', threshold_loss_scale=None, tokenizer=None, unkpen=0, unnormalized=False, upsample_primary=1, user_dir='../radam_fairseq', warmup_updates=0, weight_decay=0.0)
+| [en] dictionary: 44512 types
+| [fr] dictionary: 44512 types
+| loaded 8708 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-2/valid.en-fr.en
+| loaded 8708 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-2/valid.en-fr.fr
+| ../data-bin/wmt14_en_fr_joined_dict_split_fr-2 valid en-fr 8708 examples
+| loading model(s) from wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt
+source len: 1024
+target len: 1024
+1
+layer_num: 0, layer_iter: 1.0
+encoder attn ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+encoder ffn ratio: 1.0684021711349487
+layer_num: 1, layer_iter: 3.0
+encoder attn ratio: 1.2406854629516602
+layer_num: 1, layer_iter: 4.0
+encoder ffn ratio: 1.26668119430542
+layer_num: 2, layer_iter: 5.0
+encoder attn ratio: 1.4179164171218872
+layer_num: 2, layer_iter: 6.0
+encoder ffn ratio: 1.4515354633331299
+layer_num: 3, layer_iter: 7.0
+encoder attn ratio: 1.5819801092147827
+layer_num: 3, layer_iter: 8.0
+encoder ffn ratio: 1.6215579509735107
+layer_num: 4, layer_iter: 9.0
+encoder attn ratio: 1.7410005331039429
+layer_num: 4, layer_iter: 10.0
+encoder ffn ratio: 1.784171462059021
+layer_num: 5, layer_iter: 11.0
+encoder attn ratio: 1.890649437904358
+layer_num: 5, layer_iter: 12.0
+encoder ffn ratio: 1.9380868673324585
+layer_num: 0, layer_iter: 1.0
+decoder self ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+decoder en ratio: 1.087343692779541
+layer_num: 0, layer_iter: 3.0
+decoder ffn ratio: 1.1801178455352783
+layer_num: 1, layer_iter: 4.0
+decoder self ratio: 1.3276029825210571
+layer_num: 1, layer_iter: 5.0
+decoder en ratio: 1.380298137664795
+layer_num: 1, layer_iter: 6.0
+decoder ffn ratio: 1.4478627443313599
+layer_num: 2, layer_iter: 7.0
+decoder self ratio: 1.5848424434661865
+layer_num: 2, layer_iter: 8.0
+decoder en ratio: 1.6508562564849854
+layer_num: 2, layer_iter: 9.0
+decoder ffn ratio: 1.7075132131576538
+layer_num: 3, layer_iter: 10.0
+decoder self ratio: 1.8137255907058716
+layer_num: 3, layer_iter: 11.0
+decoder en ratio: 1.883510947227478
+layer_num: 3, layer_iter: 12.0
+decoder ffn ratio: 1.9319835901260376
+layer_num: 4, layer_iter: 13.0
+decoder self ratio: 2.033181667327881
+layer_num: 4, layer_iter: 14.0
+decoder en ratio: 2.1108345985412598
+layer_num: 4, layer_iter: 15.0
+decoder ffn ratio: 2.1586103439331055
+layer_num: 5, layer_iter: 16.0
+decoder self ratio: 2.2497386932373047
+layer_num: 5, layer_iter: 17.0
+decoder en ratio: 2.3182051181793213
+layer_num: 5, layer_iter: 18.0
+decoder ffn ratio: 2.3620712757110596
+| Translated 8708 sentences (287969 tokens) in 73.0s (119.23 sentences/s, 3943.03 tokens/s)
+| Generate valid with beam=5: BLEU4 = 43.88, 65.9/48.0/38.0/30.8 (BP=1.000, ratio=1.008, syslen=261860, reflen=259891)
+Namespace(beam=5, bpe=None, cpu=False, criterion='cross_entropy', data='../data-bin/wmt14_en_fr_joined_dict_split_fr-2', dataset_impl=None, decoding_format=None, diverse_beam_groups=-1, diverse_beam_strength=0.5, empty_cache_freq=0, force_anneal=None, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', iter_decode_eos_penalty=0.0, iter_decode_force_max_iter=False, iter_decode_max_iter=10, lazy_load=False, left_pad_source='True', left_pad_target='False', lenpen=0.8, load_alignments=False, log_format=None, log_interval=1000, lr_scheduler='fixed', lr_shrink=0.1, match_source_len=False, max_len_a=0, max_len_b=200, max_sentences=128, max_source_positions=1024, max_target_positions=1024, max_tokens=None, memory_efficient_fp16=False, min_len=1, min_loss_scale=0.0001, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_progress_bar=False, no_repeat_ngram_size=0, num_shards=1, num_workers=1, optimizer='nag', path='wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt', prefix_size=0, print_alignment=False, print_step=False, quiet=True, raw_text=False, remove_bpe='@@ ', replace_unk=None, required_batch_size_multiple=8, results_path=None, sacrebleu=False, sampling=False, sampling_topk=-1, sampling_topp=-1.0, score_reference=False, seed=1, shard_id=0, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', tbmf_wrapper=False, temperature=1.0, tensorboard_logdir='', threshold_loss_scale=None, tokenizer=None, unkpen=0, unnormalized=False, upsample_primary=1, user_dir='../radam_fairseq', warmup_updates=0, weight_decay=0.0)
+| [en] dictionary: 44512 types
+| [fr] dictionary: 44512 types
+| loaded 955 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-2/test.en-fr.en
+| loaded 955 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-2/test.en-fr.fr
+| ../data-bin/wmt14_en_fr_joined_dict_split_fr-2 test en-fr 955 examples
+| loading model(s) from wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt
+source len: 1024
+target len: 1024
+1
+layer_num: 0, layer_iter: 1.0
+encoder attn ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+encoder ffn ratio: 1.0684021711349487
+layer_num: 1, layer_iter: 3.0
+encoder attn ratio: 1.2406854629516602
+layer_num: 1, layer_iter: 4.0
+encoder ffn ratio: 1.26668119430542
+layer_num: 2, layer_iter: 5.0
+encoder attn ratio: 1.4179164171218872
+layer_num: 2, layer_iter: 6.0
+encoder ffn ratio: 1.4515354633331299
+layer_num: 3, layer_iter: 7.0
+encoder attn ratio: 1.5819801092147827
+layer_num: 3, layer_iter: 8.0
+encoder ffn ratio: 1.6215579509735107
+layer_num: 4, layer_iter: 9.0
+encoder attn ratio: 1.7410005331039429
+layer_num: 4, layer_iter: 10.0
+encoder ffn ratio: 1.784171462059021
+layer_num: 5, layer_iter: 11.0
+encoder attn ratio: 1.890649437904358
+layer_num: 5, layer_iter: 12.0
+encoder ffn ratio: 1.9380868673324585
+layer_num: 0, layer_iter: 1.0
+decoder self ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+decoder en ratio: 1.087343692779541
+layer_num: 0, layer_iter: 3.0
+decoder ffn ratio: 1.1801178455352783
+layer_num: 1, layer_iter: 4.0
+decoder self ratio: 1.3276029825210571
+layer_num: 1, layer_iter: 5.0
+decoder en ratio: 1.380298137664795
+layer_num: 1, layer_iter: 6.0
+decoder ffn ratio: 1.4478627443313599
+layer_num: 2, layer_iter: 7.0
+decoder self ratio: 1.5848424434661865
+layer_num: 2, layer_iter: 8.0
+decoder en ratio: 1.6508562564849854
+layer_num: 2, layer_iter: 9.0
+decoder ffn ratio: 1.7075132131576538
+layer_num: 3, layer_iter: 10.0
+decoder self ratio: 1.8137255907058716
+layer_num: 3, layer_iter: 11.0
+decoder en ratio: 1.883510947227478
+layer_num: 3, layer_iter: 12.0
+decoder ffn ratio: 1.9319835901260376
+layer_num: 4, layer_iter: 13.0
+decoder self ratio: 2.033181667327881
+layer_num: 4, layer_iter: 14.0
+decoder en ratio: 2.1108345985412598
+layer_num: 4, layer_iter: 15.0
+decoder ffn ratio: 2.1586103439331055
+layer_num: 5, layer_iter: 16.0
+decoder self ratio: 2.2497386932373047
+layer_num: 5, layer_iter: 17.0
+decoder en ratio: 2.3182051181793213
+layer_num: 5, layer_iter: 18.0
+decoder ffn ratio: 2.3620712757110596
+| Translated 955 sentences (28846 tokens) in 7.5s (127.83 sentences/s, 3861.07 tokens/s)
+| Generate test with beam=5: BLEU4 = 41.38, 67.7/47.4/35.0/26.1 (BP=1.000, ratio=1.010, syslen=25159, reflen=24922)
+Namespace(beam=5, bpe=None, cpu=False, criterion='cross_entropy', data='../data-bin/wmt14_en_fr_joined_dict_split_fr-3', dataset_impl=None, decoding_format=None, diverse_beam_groups=-1, diverse_beam_strength=0.5, empty_cache_freq=0, force_anneal=None, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='valid', iter_decode_eos_penalty=0.0, iter_decode_force_max_iter=False, iter_decode_max_iter=10, lazy_load=False, left_pad_source='True', left_pad_target='False', lenpen=0.8, load_alignments=False, log_format=None, log_interval=1000, lr_scheduler='fixed', lr_shrink=0.1, match_source_len=False, max_len_a=0, max_len_b=200, max_sentences=128, max_source_positions=1024, max_target_positions=1024, max_tokens=None, memory_efficient_fp16=False, min_len=1, min_loss_scale=0.0001, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_progress_bar=False, no_repeat_ngram_size=0, num_shards=1, num_workers=1, optimizer='nag', path='wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt', prefix_size=0, print_alignment=False, print_step=False, quiet=True, raw_text=False, remove_bpe='@@ ', replace_unk=None, required_batch_size_multiple=8, results_path=None, sacrebleu=False, sampling=False, sampling_topk=-1, sampling_topp=-1.0, score_reference=False, seed=1, shard_id=0, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', tbmf_wrapper=False, temperature=1.0, tensorboard_logdir='', threshold_loss_scale=None, tokenizer=None, unkpen=0, unnormalized=False, upsample_primary=1, user_dir='../radam_fairseq', warmup_updates=0, weight_decay=0.0)
+| [en] dictionary: 44512 types
+| [fr] dictionary: 44512 types
+| loaded 8752 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-3/valid.en-fr.en
+| loaded 8752 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-3/valid.en-fr.fr
+| ../data-bin/wmt14_en_fr_joined_dict_split_fr-3 valid en-fr 8752 examples
+| loading model(s) from wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt
+source len: 1024
+target len: 1024
+1
+layer_num: 0, layer_iter: 1.0
+encoder attn ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+encoder ffn ratio: 1.0684021711349487
+layer_num: 1, layer_iter: 3.0
+encoder attn ratio: 1.2406854629516602
+layer_num: 1, layer_iter: 4.0
+encoder ffn ratio: 1.26668119430542
+layer_num: 2, layer_iter: 5.0
+encoder attn ratio: 1.4179164171218872
+layer_num: 2, layer_iter: 6.0
+encoder ffn ratio: 1.4515354633331299
+layer_num: 3, layer_iter: 7.0
+encoder attn ratio: 1.5819801092147827
+layer_num: 3, layer_iter: 8.0
+encoder ffn ratio: 1.6215579509735107
+layer_num: 4, layer_iter: 9.0
+encoder attn ratio: 1.7410005331039429
+layer_num: 4, layer_iter: 10.0
+encoder ffn ratio: 1.784171462059021
+layer_num: 5, layer_iter: 11.0
+encoder attn ratio: 1.890649437904358
+layer_num: 5, layer_iter: 12.0
+encoder ffn ratio: 1.9380868673324585
+layer_num: 0, layer_iter: 1.0
+decoder self ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+decoder en ratio: 1.087343692779541
+layer_num: 0, layer_iter: 3.0
+decoder ffn ratio: 1.1801178455352783
+layer_num: 1, layer_iter: 4.0
+decoder self ratio: 1.3276029825210571
+layer_num: 1, layer_iter: 5.0
+decoder en ratio: 1.380298137664795
+layer_num: 1, layer_iter: 6.0
+decoder ffn ratio: 1.4478627443313599
+layer_num: 2, layer_iter: 7.0
+decoder self ratio: 1.5848424434661865
+layer_num: 2, layer_iter: 8.0
+decoder en ratio: 1.6508562564849854
+layer_num: 2, layer_iter: 9.0
+decoder ffn ratio: 1.7075132131576538
+layer_num: 3, layer_iter: 10.0
+decoder self ratio: 1.8137255907058716
+layer_num: 3, layer_iter: 11.0
+decoder en ratio: 1.883510947227478
+layer_num: 3, layer_iter: 12.0
+decoder ffn ratio: 1.9319835901260376
+layer_num: 4, layer_iter: 13.0
+decoder self ratio: 2.033181667327881
+layer_num: 4, layer_iter: 14.0
+decoder en ratio: 2.1108345985412598
+layer_num: 4, layer_iter: 15.0
+decoder ffn ratio: 2.1586103439331055
+layer_num: 5, layer_iter: 16.0
+decoder self ratio: 2.2497386932373047
+layer_num: 5, layer_iter: 17.0
+decoder en ratio: 2.3182051181793213
+layer_num: 5, layer_iter: 18.0
+decoder ffn ratio: 2.3620712757110596
+| Translated 8752 sentences (543515 tokens) in 177.9s (49.21 sentences/s, 3055.81 tokens/s)
+| Generate valid with beam=5: BLEU4 = 48.69, 71.2/53.3/43.3/36.1 (BP=0.987, ratio=0.987, syslen=499267, reflen=505668)
+Namespace(beam=5, bpe=None, cpu=False, criterion='cross_entropy', data='../data-bin/wmt14_en_fr_joined_dict_split_fr-3', dataset_impl=None, decoding_format=None, diverse_beam_groups=-1, diverse_beam_strength=0.5, empty_cache_freq=0, force_anneal=None, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', iter_decode_eos_penalty=0.0, iter_decode_force_max_iter=False, iter_decode_max_iter=10, lazy_load=False, left_pad_source='True', left_pad_target='False', lenpen=0.8, load_alignments=False, log_format=None, log_interval=1000, lr_scheduler='fixed', lr_shrink=0.1, match_source_len=False, max_len_a=0, max_len_b=200, max_sentences=128, max_source_positions=1024, max_target_positions=1024, max_tokens=None, memory_efficient_fp16=False, min_len=1, min_loss_scale=0.0001, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_progress_bar=False, no_repeat_ngram_size=0, num_shards=1, num_workers=1, optimizer='nag', path='wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt', prefix_size=0, print_alignment=False, print_step=False, quiet=True, raw_text=False, remove_bpe='@@ ', replace_unk=None, required_batch_size_multiple=8, results_path=None, sacrebleu=False, sampling=False, sampling_topk=-1, sampling_topp=-1.0, score_reference=False, seed=1, shard_id=0, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', tbmf_wrapper=False, temperature=1.0, tensorboard_logdir='', threshold_loss_scale=None, tokenizer=None, unkpen=0, unnormalized=False, upsample_primary=1, user_dir='../radam_fairseq', warmup_updates=0, weight_decay=0.0)
+| [en] dictionary: 44512 types
+| [fr] dictionary: 44512 types
+| loaded 1001 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-3/test.en-fr.en
+| loaded 1001 examples from: ../data-bin/wmt14_en_fr_joined_dict_split_fr-3/test.en-fr.fr
+| ../data-bin/wmt14_en_fr_joined_dict_split_fr-3 test en-fr 1001 examples
+| loading model(s) from wmt14enfr/wmt-admin-abspos-6l/checkpoint43.pt
+source len: 1024
+target len: 1024
+1
+layer_num: 0, layer_iter: 1.0
+encoder attn ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+encoder ffn ratio: 1.0684021711349487
+layer_num: 1, layer_iter: 3.0
+encoder attn ratio: 1.2406854629516602
+layer_num: 1, layer_iter: 4.0
+encoder ffn ratio: 1.26668119430542
+layer_num: 2, layer_iter: 5.0
+encoder attn ratio: 1.4179164171218872
+layer_num: 2, layer_iter: 6.0
+encoder ffn ratio: 1.4515354633331299
+layer_num: 3, layer_iter: 7.0
+encoder attn ratio: 1.5819801092147827
+layer_num: 3, layer_iter: 8.0
+encoder ffn ratio: 1.6215579509735107
+layer_num: 4, layer_iter: 9.0
+encoder attn ratio: 1.7410005331039429
+layer_num: 4, layer_iter: 10.0
+encoder ffn ratio: 1.784171462059021
+layer_num: 5, layer_iter: 11.0
+encoder attn ratio: 1.890649437904358
+layer_num: 5, layer_iter: 12.0
+encoder ffn ratio: 1.9380868673324585
+layer_num: 0, layer_iter: 1.0
+decoder self ratio: 1.0
+layer_num: 0, layer_iter: 2.0
+decoder en ratio: 1.087343692779541
+layer_num: 0, layer_iter: 3.0
+decoder ffn ratio: 1.1801178455352783
+layer_num: 1, layer_iter: 4.0
+decoder self ratio: 1.3276029825210571
+layer_num: 1, layer_iter: 5.0
+decoder en ratio: 1.380298137664795
+layer_num: 1, layer_iter: 6.0
+decoder ffn ratio: 1.4478627443313599
+layer_num: 2, layer_iter: 7.0
+decoder self ratio: 1.5848424434661865
+layer_num: 2, layer_iter: 8.0
+decoder en ratio: 1.6508562564849854
+layer_num: 2, layer_iter: 9.0
+decoder ffn ratio: 1.7075132131576538
+layer_num: 3, layer_iter: 10.0
+decoder self ratio: 1.8137255907058716
+layer_num: 3, layer_iter: 11.0
+decoder en ratio: 1.883510947227478
+layer_num: 3, layer_iter: 12.0
+decoder ffn ratio: 1.9319835901260376
+layer_num: 4, layer_iter: 13.0
+decoder self ratio: 2.033181667327881
+layer_num: 4, layer_iter: 14.0
+decoder en ratio: 2.1108345985412598
+layer_num: 4, layer_iter: 15.0
+decoder ffn ratio: 2.1586103439331055
+layer_num: 5, layer_iter: 16.0
+decoder self ratio: 2.2497386932373047
+layer_num: 5, layer_iter: 17.0
+decoder en ratio: 2.3182051181793213
+layer_num: 5, layer_iter: 18.0
+decoder ffn ratio: 2.3620712757110596
+| Translated 1001 sentences (49787 tokens) in 14.6s (68.35 sentences/s, 3399.79 tokens/s)
+| Generate test with beam=5: BLEU4 = 41.74, 69.3/48.0/35.2/26.3 (BP=0.996, ratio=0.996, syslen=43305, reflen=43478)

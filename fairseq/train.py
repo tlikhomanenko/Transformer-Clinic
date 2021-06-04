@@ -319,10 +319,16 @@ def cli_main():
         if torch.cuda.device_count() > 1 and not args.distributed_no_spawn:
             start_rank = args.distributed_rank
             args.distributed_rank = None  # assign automatically
+            print("HERE HELL")
             torch.multiprocessing.spawn(
                 fn=distributed_main,
                 args=(args, start_rank),
-                nprocs=torch.cuda.device_count(),
+                # nprocs=torch.cuda.device_count(),
+                nprocs=min(
+                    torch.cuda.device_count(),
+                    cfg.distributed_training.distributed_world_size,
+                ),
+                join=True,
             )
         else:
             distributed_main(args.device_id, args)

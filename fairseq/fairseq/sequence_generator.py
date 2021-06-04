@@ -389,7 +389,7 @@ class SequenceGenerator(object):
 
             # only consider eos when it's among the top beam_size indices
             torch.masked_select(
-                cand_bbsz_idx[:, :beam_size],
+                cand_bbsz_idx[:, :beam_size].type_as(eos_bbsz_idx),
                 mask=eos_mask[:, :beam_size],
                 out=eos_bbsz_idx,
             )
@@ -465,7 +465,7 @@ class SequenceGenerator(object):
 
             active_bbsz_idx = buffer('active_bbsz_idx')
             torch.gather(
-                cand_bbsz_idx, dim=1, index=active_hypos,
+                cand_bbsz_idx.type_as(active_bbsz_idx), dim=1, index=active_hypos,
                 out=active_bbsz_idx,
             )
             active_scores = torch.gather(

@@ -218,8 +218,25 @@ class FairseqEncoderDecoderModel(BaseFairseqModel):
                 - the decoder's output of shape `(batch, tgt_len, vocab)`
                 - a dictionary with any model-specific outputs
         """
-        encoder_out = self.encoder(src_tokens, src_lengths=src_lengths, **kwargs)
-        decoder_out = self.decoder(prev_output_tokens, encoder_out=encoder_out, **kwargs)
+        global_shift = None
+        global_shift_int = False
+        if hasattr(self.encoder, "aug") and hasattr(self.decoder, "aug"):
+            assert self.encoder.aug == self.decoder.aug, "Error, both should be augmented, or not augm"
+            if self.encoder.aug and self.decoder.aug and self.training:
+                if hasattr(self.encoder, "global_shift_int") and self.encoder.global_shift_int:
+                    global_shift_int = True
+                    global_shift = torch.randint(
+                        -int(self.encoder.global_shift), int(self.encoder.global_shift), (src_tokens.shape[0],))
+                else:
+                    global_shift = torch.rand((src_tokens.shape[0])) * 2 * self.encoder.global_shift - self.encoder.global_shift
+        elif hasattr(self.encoder, "aug") or hasattr(self.decoder, "aug"):
+            assert 1==0, "Encoder and decoder both should have or no have aug field"
+        encoder_out = self.encoder(src_tokens, src_lengths=src_lengths, 
+                                   global_shift=global_shift, global_shift_int=global_shift_int,
+                                   **kwargs)
+        decoder_out = self.decoder(prev_output_tokens, encoder_out=encoder_out, 
+                                   global_shift=global_shift, global_shift_int=global_shift_int,
+                                   **kwargs)
         return decoder_out
 
     def forward_decoder(self, prev_output_tokens, **kwargs):

@@ -139,3 +139,5 @@ fairseq-preprocess --source-lang en --target-lang fr \
   --trainpref $prep/train --validpref $prep/valid --testpref $prep/test \
   --destdir ../data-bin/wmt14_en_fr_joined_dict \
   --joined-dictionary --workers 60
+
+python ../fairseq/preprocess.py --source-lang en --target-lang fr  --validpref wmt14_en_fr/tmp/bpe-1.valid  --testpref wmt14_en_fr/tmp/bpe-1.test   --destdir ../data-bin/wmt14_en_fr_joined_dict_split_fr --joined-dictionary --srcdict=../data-bin/wmt14_en_fr_joined_dict/dict.en.txt
